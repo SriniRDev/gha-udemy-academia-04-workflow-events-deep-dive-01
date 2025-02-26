@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
-  workflow_dispatch:    
+    branches:
+      - main # main
+      - dev-* # dev-new # dev-this-is-new
+      - feat/** # feat/new feat/new/button ** covers allows slash(/) while * doesnt allow
+  workflow_dispatch:
+  push:
+    branches:
+      - main # main
+      - dev-* # dev-new # dev-this-is-new
+      - feat/** # feat/new feat/new/button ** covers allows slash(/) while * doesnt allow   
+    paths-ignore:
+      - '.github/workflows/*' # this also ignores other files if pushed in the same commit as ignore files
 jobs:
   deploy:
     runs-on: ubuntu-latest
